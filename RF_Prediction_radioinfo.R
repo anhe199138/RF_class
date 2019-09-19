@@ -15,7 +15,7 @@ testing  <- read_excel("Prediction_RandomForest/testing.xlsx")
 # method 1 to read features
 x_train <- training[, c("mean0","sd0","sd2","sd3","sd4","sd5","sd6",
                         "entropy0","entropy2","entropy3","entropy4","entropy5","entropy6",
-                        "mpp0","mpp2","mpp3","mpp4","mpp5","mpp6","age")]
+                        "mpp0","mpp2","mpp3","mpp4","mpp5","mpp6","age","CA125")]
 # method 2 to read features
 # x_test <- cbind(array(data = testing[["mean0"]], dim = c(62,1)),
 #                 array(data = testing[["sd0"]], dim = c(62,1)),
@@ -37,7 +37,7 @@ y_train_histype <- training[["histype"]]
 # features (x) and corresponding labels (y) in testing set
 x_test <- testing[, c("mean0","sd0","sd2","sd3","sd4","sd5","sd6",
                       "entropy0","entropy2","entropy3","entropy4","entropy5","entropy6",
-                      "mpp0","mpp2","mpp3","mpp4","mpp5","mpp6","age")]
+                      "mpp0","mpp2","mpp3","mpp4","mpp5","mpp6","age","CA125")]
 
 y_test_PR <- factor(testing[["PR"]],labels = c(0,1))
 y_test_ER <- factor(testing[["ER"]],labels = c(0,1))
@@ -60,7 +60,7 @@ RF_model_PR <- randomForest(as.factor(PR) ~
                                 #age,
                                 mean0+sd0+sd2+sd3+sd4+sd5+sd6+
                                 entropy0+entropy2+entropy3+entropy4+entropy5+entropy6+
-                                mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age,
+                                mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age+CA125,
                                 data = training, 
                                 importance=TRUE, ntree = 1000)
 # Method 2
@@ -70,7 +70,7 @@ RF_model_PR <- randomForest(as.factor(PR) ~
 RF_model_ER <- randomForest(as.factor(ER) ~ 
                               mean0+sd0+sd2+sd3+sd4+sd5+sd6+
                               entropy0+entropy2+entropy3+entropy4+entropy5+entropy6+
-                              mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age,
+                              mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age+CA125,
                             data = training, 
                             importance=TRUE, ntree = 1000)
 
@@ -78,7 +78,7 @@ RF_model_ER <- randomForest(as.factor(ER) ~
 RF_model_WT1 <- randomForest(as.factor(WT1) ~ 
                               mean0+sd0+sd2+sd3+sd4+sd5+sd6+
                               entropy0+entropy2+entropy3+entropy4+entropy5+entropy6+
-                              mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age,
+                              mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age+CA125,
                             data = training, 
                             importance=TRUE, ntree = 1000)
 
@@ -86,7 +86,7 @@ RF_model_WT1 <- randomForest(as.factor(WT1) ~
 RF_model_histype <- randomForest(as.factor(histype) ~ 
                               mean0+sd0+sd2+sd3+sd4+sd5+sd6+
                               entropy0+entropy2+entropy3+entropy4+entropy5+entropy6+
-                              mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age,
+                              mpp0+mpp2+mpp3+mpp4+mpp5+mpp6+age+CA125,
                             data = training, 
                             importance=TRUE, ntree = 1000)
 
