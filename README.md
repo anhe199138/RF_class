@@ -1,6 +1,7 @@
-# Random Forest-based clinical outcome prediction using radiomic features
-- Clinical outcome include: "histype", "WT1", "ER", "TR"
-- Radiomic features include: "age", "mean", "sd", "entropy", "mpp"
+# Random Forest-based clinical outcome prediction using radiomic features and clinical features
+- Clinical outcome include: "histype", "WT1", "ER", "PR"
+- Radiomic features include: "mean", "sd", "entropy", "mpp"
+- Clinical features include: "age"
 - Prediction algorithm: Random Forest
 
 ## Contents
